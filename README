@@ -3,6 +3,10 @@
 title = "|| SNDCNV ||"
 author = "|| Hugh Rawlinson ||"
 
-A python soundfile converter that will convert between Wave and Aiff formats.
+A python soundfile converter that will convert between Wave and Aiff formats. The program finds the file type of the file pointed to in the first argument, and converts it to the other.
+
+Usage: python main.py [filetoconvert.extention] [desiredfilename.extention]
+Extention is not manditory.
 
 I use Nilton Volpato's progressbar, which is available at http://code.google.com/p/python-progressbar/
+Naturally, no copyright infringement is intended. I release my code as open source, as did Nilton Volpato with progressbar, and I only include it here for ease of use of my program.
