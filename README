@@ -1,0 +1,8 @@
+|| RAW SOFTWARE ||
+
+title = "|| SNDCNV ||"
+author = "|| Hugh Rawlinson ||"
+
+A python soundfile converter that will convert between Wave and Aiff formats.
+
+I use Nilton Volpato's progressbar, which is available at http://code.google.com/p/python-progressbar/
