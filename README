@@ -11,8 +11,15 @@ Naturally, no copyright infringement is intended. I release my code as open sour
 
 Usage
 =====
-Usage: python SNDCNV.py [filetoconvert.extention] [desiredfilename.extention]
-Extention is not manditory.
+import SNDCNV
+
+SNDCNV.convert("inputFile","outputFile",samplesPerCycle)
+
+Command line use is also possible in the form:
+python SNDCNV.py inputfile.aiff/wav outputfile.aiff/wav samplesPerCycle
+
+A note on samplesPerCycle:
+This variable affects the performance of the module. The greater the number the faster the program will run, but this will have an effect on the performance of your computer. The defailt value is 441
 
 Version Notes
 =============

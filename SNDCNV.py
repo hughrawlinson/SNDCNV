@@ -1,11 +1,12 @@
 import wave, aifc, sys, sndhdr
 
 def convert(input, output):
+	samplePerCycle = 1
 	"""Converts between wav and aiff files"""
-	if sndhdr.what(location)[0] == 'wav':
+	if sndhdr.what(input)[0] == 'wav':
 		#from Wav to Aiff.
 		input = wave.open(input, 'r')
-		output = wave.open(output, 'w')
+		output = aifc.open(output, 'w')
 	
 	elif sndhdr.what(output)[0] == 'aiff':
 		#from Aiff to Wav
@@ -21,10 +22,17 @@ def convert(input, output):
 	i = 1
 	dataset = []
 	
-	for i in range(1,nframes + 1):
-		location.setpos(i)
-		dataval = input.readframes(1)
+	for i in range(0, nframes, samplePerCycle):
+		input.setpos(i)
+		dataval = input.readframes(samplePerCycle)
 		dataset.append(dataval)
+		
+		#===========================================
+		#Implement output(nframes) == input(nframes)
+		#===========================================
+		#if (nframes % samplePerCycle < samplePerCycle):
+		#	if (nframes % samplePerCycle != 0):
+		#		samplePerCycle = nframes % samplePerCycle
 		
 	valuestr = ''.join(dataset)
 	output.writeframes(valuestr)
@@ -36,4 +44,4 @@ if __name__ == "__main__":
 	import sys
 	inputFile = sys.argv[1]
 	outputFile = sys.argv[2]
-	convert(input,output)
+	convert(inputFile,outputFile)
