@@ -8,7 +8,7 @@ def convert(input, output):
 		input = wave.open(input, 'r')
 		output = aifc.open(output, 'w')
 	
-	elif sndhdr.what(output)[0] == 'aiff':
+	elif sndhdr.what(input)[0] == 'aiff':
 		#from Aiff to Wav
 		input = aifc.open(input, 'r')
 		output = wave.open(output, 'w')
@@ -22,10 +22,15 @@ def convert(input, output):
 	i = 1
 	dataset = []
 	
+	#input.setpos(1)
+	#dataval = input.readframes(nframes)
+	#dataset.append(dataval)
 	for i in range(0, nframes, samplePerCycle):
 		input.setpos(i)
 		dataval = input.readframes(samplePerCycle)
 		dataset.append(dataval)
+		if(i%1000==0):
+			print str(i) + "/" + str(nframes)
 		
 		#===========================================
 		#Implement output(nframes) == input(nframes)
